@@ -1,0 +1,59 @@
+.contactpage-main {
+  width: 62%;
+  margin: auto;
+}
+
+.contactus-info {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.contactus-info-part {
+  width: 90%;
+  margin: auto;
+  border: 1px solid #cccccc;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  text-align: center;
+}
+
+.contactus-info-icon {
+  margin-top: 30px;
+  width: 80px;
+  height: 80px;
+  color: blue;
+}
+
+.contactus-info-part {
+  padding-bottom: 20px;
+}
+.small-text {
+    font-size: 20px; 
+  }
+
+
+.map {
+  border-radius: 16px;
+  margin: auto;
+  border: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+
+@media (max-width: 768px) {
+    .contactus-info {
+      grid-template-columns: 1fr;
+    }
+    .small-text {
+      font-size: 14px; 
+    }
+    .contactus-info{
+        gap: 20px;
+    }
+  }
