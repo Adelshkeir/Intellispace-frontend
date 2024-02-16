@@ -4,6 +4,7 @@ import Footer from "./components/footer";
 import Home from "./pages/homepage/homepage";
 import Contactpage from "./pages/contactpage/contactpage";
 import Aboutus from "./pages/aboutpage/aboutus";
+import Shoppage from "./pages/shoppage/shoppage";
 import {
   BrowserRouter,
   Routes,
@@ -31,7 +32,7 @@ function App() {
           <Route path="/" element={<Home />} />
 <Route path="/Contact" element={<Contactpage />} />
 <Route path="/About" element={<Aboutus />} />
-
+<Route path="/Shop" element={<Shoppage />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,16 +1,17 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-const Curatorspickcard = () => {
+import { Link } from "react-router-dom";
+const Curatorspickcard = ({ product }) => {
   return (
-    <Link to="#" style={{ textDecoration: 'none' }}>
-    <div className="categorycardcontainer">
-      <div>
-        <img src="https://i.ytimg.com/vi/HCkyirkk5Xo/sddefault.jpg"/>
+    <Link to="#" style={{ textDecoration: "none" }}>
+      <div className="categorycardcontainer">
+        <div>
+          <img src={`http://localhost:8080/${product.image}`} />
+        </div>
+        <p>{product.name}</p>
+        <p>{product.description}</p>
+        <p>{product.price}</p>
+        <button className="homepage-addtocart">Add To Cart</button>
       </div>
-      <p>This is one of the cards</p>
-      <p>233$</p>
-      <button className="homepage-addtocart">Add To Cart</button>
-    </div>
     </Link>
   );
 };

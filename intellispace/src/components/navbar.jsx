@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navbar, Nav, NavLink } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import i20 from "../assets/Intellispace.png";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useWindowScroll } from 'react-use';
 const Navigation = () => {
   const navigate = useNavigate();
 
@@ -11,8 +13,22 @@ const Navigation = () => {
     navigate('/');
   };
 
+
+  const { y } = useWindowScroll();
+
+  useEffect(() => {
+    AOS.init({ duration: 500 });
+  }, []);
+
+  useEffect(() => {
+    if (y > 0) {
+      AOS.refresh();
+    }
+  }, [y]);
+
+
   return (
-    <div className="container-lg">
+    <div className="container-lg" data-aos="fade-right">
       <Navbar expand="lg" className="px-5 navbar" style={{ margin: 'auto' }}>
         <Navbar.Brand as={Link} to="/" className='d-flex justify-content-baseline'>
           <img src={i20} alt="" className="custom-logo-class" onClick={handleNavigate} style={{ maxHeight: '100px' }} />

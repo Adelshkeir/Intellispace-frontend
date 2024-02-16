@@ -191,3 +191,13 @@ a {
     outline: none !important;
     box-shadow: none !important;
 }
+
+
+
+.navbar {
+    transition: background-color 0.3s, opacity 0.3s;
+  }
+  
+  .navbar.scrolled {
+    opacity: 0.9; 
+  }

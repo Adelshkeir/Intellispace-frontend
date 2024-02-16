@@ -106,7 +106,7 @@
 .categorycardcontainer p {
   text-align: center;
   color: #2a74ed;
-  padding-top: 10px;
+  padding-top: 2px;
 }
 
 .homepage-categories {
@@ -129,8 +129,6 @@
   margin-top: 100px;
   margin-bottom: 100px;
 }
-
-
 
 .homepage-lastpart-info {
   width: 80%;
@@ -163,13 +161,9 @@
   margin-top: 40px;
 }
 
-
-
 @media (max-width: 768px) {
-
-  .homepage-firstsection-title{
+  .homepage-firstsection-title {
     font-size: 20px;
-
   }
   .homepage-firstsection-info {
     text-align: center;
@@ -177,13 +171,12 @@
   .homepage-firstsection {
     grid-template-columns: 1fr;
   }
-  .homepage-firstsection button{
+  .homepage-firstsection button {
     width: 80%;
     font-size: 15px;
     margin-top: 0px;
-margin-bottom: 10px;
+    margin-bottom: 10px;
   }
-
 
   .homepage-secondsection {
     width: 100%;
@@ -194,9 +187,7 @@ margin-bottom: 10px;
     width: 100%;
   }
 
-
-
-  .homepage-categories{
+  .homepage-categories {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -206,27 +197,24 @@ margin-bottom: 10px;
     margin: auto;
   }
 
+  .homepage-viewall button {
+    width: 80%;
+  }
 
-.homepage-viewall button{
-  width: 80%;
-}
+  .homepage-lastpart {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 
-.homepage-lastpart{
-  grid-template-columns: 1fr;
-  text-align: center;
-}
-  
-.homepage-lastpart img {
-  width: 100%;
-  
-}
-.homepage-lastpart h3{
-  font-size: 18px !important;
-}
+  .homepage-lastpart img {
+    width: 100%;
+  }
+  .homepage-lastpart h3 {
+    font-size: 18px !important;
+  }
 
-.homepage-lastpart-button{
-  width: 80%;
-  margin: auto;
-}
-
+  .homepage-lastpart-button {
+    width: 80%;
+    margin: auto;
+  }
 }
