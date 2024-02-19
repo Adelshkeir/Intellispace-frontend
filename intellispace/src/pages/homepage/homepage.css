@@ -61,7 +61,6 @@
 .homepage-viewall button {
   background-color: #2a74ed;
   color: white;
-  width: 20%;
   border-radius: 16px;
   border: none;
   padding: 10px;
@@ -195,10 +194,6 @@
     gap: 20px;
     width: 80%;
     margin: auto;
-  }
-
-  .homepage-viewall button {
-    width: 80%;
   }
 
   .homepage-lastpart {

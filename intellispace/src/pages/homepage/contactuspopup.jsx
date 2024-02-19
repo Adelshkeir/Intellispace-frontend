@@ -4,17 +4,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import emailjs from "emailjs-com";
 
-export default function ContactUsModal() {
-    const [show, setShow] = useState(false);
+export default function ContactUsModal({ show, setShow }) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
     const form = useRef();
-
-    useEffect(() => {
-        setShow(true);
-    }, [show]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,6 +26,7 @@ export default function ContactUsModal() {
                 setName("");
                 setEmail("");
                 setMessage("");
+                setShow(false); 
             },
             (error) => {
                 console.log(error.text);

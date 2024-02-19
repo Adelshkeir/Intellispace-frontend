@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./homepage.css";
 import Curatorspickcarousel from "./curatorspickcarousel";
 import desk from "../../assets/desk.png";
@@ -8,17 +9,13 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ContactUsModal from "./contactuspopup";
-const Home = () => {
 
+const Home = () => {
   const [showContactModal, setShowContactModal] = useState();
 
   const handleContactModalOpen = () => {
     setShowContactModal(true);
-    console.log("najendjsadjandjd")
   };
-
-
-
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -36,7 +33,9 @@ const Home = () => {
             Get instant alerts for anyone who approaches,
             <br /> even if they don't press the doorbell.
           </p>
-          <button>Buy Now</button>
+          <Link to="/Shop">
+            <button>Buy Now</button>
+          </Link>
         </div>
         <img
           src="https://protecsecuritysystems.com/wp-content/uploads/cache/2019/09/home-security-camera-front-home/2336279802.jpg"
@@ -61,7 +60,9 @@ const Home = () => {
         <Curatorspickcarousel />
       </div>
       <div className="homepage-viewall">
-        <button>view all products</button>
+        <Link to="/Shop">
+          <button>View All Products</button>
+        </Link>
       </div>
 
       <div className="homepage-categories" data-aos="fade-right">
@@ -94,19 +95,25 @@ const Home = () => {
       </div>
 
       <div className="homepage-lastpart" data-aos="fade-left">
-        <img src={desk} alt="sjowing a lady using a desk" />
+        <img src={desk} alt="showing a lady using a desk" />
         <div className="homepage-lastpart-info">
           <h3>Do you have any questions about our products?</h3>
           <p>
             Then do not hesitate to contact us. Our support team will be happy
             to answer your question. Usually within one to two working days.
           </p>
-          <button className="homepage-lastpart-button" onClick={handleContactModalOpen}>
-          Contact us
-        </button>
+          <button
+            className="homepage-lastpart-button"
+            onClick={handleContactModalOpen}
+          >
+            Contact us
+          </button>
         </div>
       </div>
-      <ContactUsModal show={showContactModal} setShow={setShowContactModal} />
+      <ContactUsModal
+        show={showContactModal}
+        setShow={setShowContactModal}
+      />
     </div>
   );
 };

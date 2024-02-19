@@ -23,7 +23,7 @@ const Shoppage = () => {
   useEffect(() => {
     if (categoryName) {
       axios
-        .get(`http://localhost:8080/product/${categoryName}`)
+        .get(`http://localhost:8080/product/category/${categoryName}`)
         .then((res) => {
           console.log(res.data);
           setProducts(res.data);
