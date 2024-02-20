@@ -10,7 +10,8 @@ const Footer = () => {
   }, []);
   return (
     <>
-      <footer data-aos="fade-left"
+      <footer
+        data-aos="fade-left"
         className="text-center text-lg-start text-dark"
         style={{ backgroundColor: "transparent" }}
       >
@@ -82,17 +83,17 @@ const Footer = () => {
                   </Link>
                 </p>
                 <p>
-                  <Link to={"/products"} className="text-dark">
+                  <Link to={"/Shop"} className="text-dark">
                     Shop
                   </Link>
                 </p>
                 <p>
-                  <Link to={"/Feedbacks"} className="text-dark">
+                  <Link to={"/About"} className="text-dark">
                     About
                   </Link>
                 </p>
                 <p>
-                  <Link to={"/privacy-policy"} className="text-dark">
+                  <Link to={"/Contact"} className="text-dark">
                     Contact
                   </Link>
                 </p>

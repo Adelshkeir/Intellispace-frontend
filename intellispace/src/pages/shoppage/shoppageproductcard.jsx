@@ -1,14 +1,19 @@
 const Shoppageproductcard = ({ product }) => {
   return (
-    <div className="productcardcontainer">
-      <div>
-        <img src="https://i.ytimg.com/vi/HCkyirkk5Xo/sddefault.jpg" />
+    <figure className="snip1249">
+      <div className="image">
+        <img src={`http://localhost:8080/${product.image}`} alt={product.name} />
+        <i className="ion-ios-basketball-outline"></i>
       </div>
-      <p>{product.name}</p>
-      <p>{product.description}</p>
-      <p>{product.price}</p>
-      <button className="homepage-addtocart">View More</button>
-    </div>
+      <figcaption>
+        <h3>{product.name}</h3>
+        <p>{product.description}</p>
+        <div className="price">
+        {product.price}$
+        </div>
+        <a href="#" className="add-to-cart">Add to Cart</a>
+      </figcaption>
+    </figure>
   );
 };
 
