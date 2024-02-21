@@ -1,43 +1,45 @@
+import { useEffect, useState } from "react";
 import "./singleproductpage.css"
+import axios from "axios";
+import { useParams } from "react-router-dom";
+
 const Singleproductpage = () => {
+    const { productID } = useParams(); 
+    const [product, setProduct] = useState(null); 
+
+    useEffect(() => {
+        axios
+          .get(`http://localhost:8080/product/${productID}`) 
+          .then((res) => {
+            console.log(res.data);
+            setProduct(res.data); 
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
+      }, [productID]);
+
     return (
         <div className="singleproductpage-main">
         
-        
-        <div className="singleproductpage-product">
-<img src="https://protecsecuritysystems.com/wp-content/uploads/cache/2019/09/home-security-camera-front-home/2336279802.jpg" />
+        {product && (
+          <div className="singleproductpage-product">
+            <img src={`http://localhost:8080/${product.image}`} />
+            <div className="singleproductpage-product-info">
+              <h1>{product.name}</h1>
+              <h5>{product.price}</h5>
+              <p>{product.description}</p>
+              <button>Add To Cart</button>
+            </div>
+          </div>
+        )}
 
-<div  className="singleproductpage-product-info">
-
-<h1>This is the product's name</h1>
-
-<h5>This is the product's price</h5>
-
-<p>This is the product's description</p>
-
-<button>Add To Cart</button>
-
-</div>
-
-
-
-        </div>
-        
-        
         <h4>Reviews</h4>
-        
-
-<div className="Reviews">
-
-
-
-</div>
-
-        
-        
+        <div className="Reviews">
+aaaa
         </div>
-        
-    )
+      </div>
+    );
 }
 
-export default Singleproductpage
+export default Singleproductpage;

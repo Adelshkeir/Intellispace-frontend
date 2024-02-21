@@ -9,9 +9,9 @@ const Shoppageproductcard = ({ product }) => {
         <h3>{product.name}</h3>
         <p>{product.description}</p>
         <div className="price">
-        {product.price}$
+          {product.price}$
         </div>
-        <a href="#" className="add-to-cart">Add to Cart</a>
+        <a href={`/Shop/${product.id}`} className="add-to-cart">View More</a>
       </figcaption>
     </figure>
   );
