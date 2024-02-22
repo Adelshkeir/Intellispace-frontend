@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@blacklab/react-image-magnify": "^4.1.1",
+    "@reduxjs/toolkit": "^2.2.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -18,9 +19,11 @@
     "react-icons": "^5.0.1",
     "react-multi-carousel": "^2.8.4",
     "react-query": "^3.39.3",
-    "react-router-dom": "^6.22.0",
+    "react-redux": "^9.1.0",
+    "react-router-dom": "^6.22.1",
     "react-scripts": "5.0.1",
     "react-use": "^17.5.0",
+    "sweetalert2": "^11.10.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

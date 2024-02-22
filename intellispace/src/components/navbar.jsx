@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Nav, NavLink } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
@@ -6,18 +6,41 @@ import i20 from "../assets/Intellispace.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useWindowScroll } from "react-use";
+import Swal from "sweetalert2";
+
 const Navigation = () => {
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+
+  useEffect(() => {
+    
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token); 
+    AOS.init({ duration: 500 });
+  }, []);
+
+  const handleLogout = () => {
+    Swal.fire({
+      title: "Are you sure you want to logout?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logout",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.clear();
+        setIsLoggedIn(false); 
+        window.location.href = "/login";
+      }
+    });
+  };
 
   const handleNavigate = () => {
     navigate("/");
   };
 
   const { y } = useWindowScroll();
-
-  useEffect(() => {
-    AOS.init({ duration: 500 });
-  }, []);
 
   useEffect(() => {
     if (y > 0) {
@@ -27,12 +50,8 @@ const Navigation = () => {
 
   return (
     <div className="w-75 m-auto" data-aos="fade-right">
-      <Navbar expand="lg" className="navbar" >
-        <Navbar.Brand
-          as={Link}
-          to="/"
-          className="d-flex justify-content-baseline"
-        >
+      <Navbar expand="lg" className="navbar">
+        <Navbar.Brand as={Link} to="/" className="d-flex justify-content-baseline">
           <img
             src={i20}
             alt=""
@@ -41,14 +60,8 @@ const Navigation = () => {
             style={{ maxHeight: "100px" }}
           />
         </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls="responsive-navbar-nav"
-          className="justify-self-end"
-        />
-        <Navbar.Collapse
-          id="responsive-navbar-nav "
-          className="justify-content-end"
-        >
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="justify-self-end" />
+        <Navbar.Collapse id="responsive-navbar-nav " className="justify-content-end">
           <Nav className="mr-auto">
             <NavLink
               as={Link}
@@ -82,12 +95,21 @@ const Navigation = () => {
             >
               Contact
             </NavLink>
-            <NavLink
-              as={Link}
-              to="/cart"
-              className="nav-link "
-              style={{ fontSize: "1.1rem" }}
-            >
+            {isLoggedIn ? ( 
+              <NavLink className="nav-link" onClick={handleLogout} style={{ fontSize: "1.1rem" }}>
+                Logout
+              </NavLink>
+            ) : ( 
+              <NavLink
+                as={Link}
+                to="/login"
+                className="nav-link text-warning1 px-3"
+                style={{ fontSize: "1.1rem" }}
+              >
+                Login
+              </NavLink>
+            )}
+            <NavLink as={Link} to="/cart" className="nav-link " style={{ fontSize: "1.1rem" }}>
               <FaShoppingCart className="text-warning3" />
               <span
                 className="cart-counter w-100"

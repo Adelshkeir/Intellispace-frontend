@@ -1,49 +1,70 @@
-
-
-.singleproductpage-main{
-    margin-top: 50px;
-    width: 75%;
-    margin: auto;
+.singleproductpage-main {
+  margin-top: 50px;
+  width: 75%;
+  margin: auto;
 }
 
-.singleproductpage-product{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.singleproductpage-product {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-
-.singleproductpage-product img{
-
-    border-radius: 16px;
-    width: 95%;
-    margin: auto;
+.singleproductpage-product img {
+  border-radius: 16px;
+  width: 95%;
+  margin: auto;
 }
 
-
-
-
-.singleproductpage-product-info{
-    width: 80%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-font-family: Roboto;
+.singleproductpage-product-info {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: Roboto;
 }
 
-
-.singleproductpage-product-info button{
-    background-color: #2a74ed;
-    color: white;
-    width: 40%;
-    border-radius: 28px;
-    border: none;
-    padding: 10px;
-margin-top: 50px;
+.singleproductpage-product-info button {
+  background-color: #2a74ed;
+  color: white;
+  width: 40%;
+  border-radius: 28px;
+  border: none;
+  padding: 10px;
+  margin-top: 50px;
 }
 
 
+.Reviews-title-line {
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+  margin-top: 150px;
+}
 
 
 
+.Reviews-title{
+margin-top: 20px;
+}
+
+
+.Reviews {
+  margin-top: 20px;
+}
+
+.review {
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.review p {
+  margin: 0;
+}
+
+.review p:first-child {
+  font-weight: bold;
+}

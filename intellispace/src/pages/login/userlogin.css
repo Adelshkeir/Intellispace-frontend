@@ -1,0 +1,16 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+
+
+.user-login-container{
+    background-image: URL("https://www.hdwallpapers.in/download/blue_green_lines_feather_abstraction_illustration_soft_simple_background_hd_soft-1920x1080.jpg");
+}
+
+.user-login-label{
+    color: black;
+}
