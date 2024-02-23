@@ -16,6 +16,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Singleproductpage from "./pages/singleproductpage/singleproductpage";
+import CheckoutPage from "./pages/checkoutpage/checkoutpage";
 const Layout = () => {
   return (
     <>
@@ -40,6 +41,7 @@ function App() {
             <Route path="/Cart" element={<Cart />} />
             <Route path="/Login" element={<UserLogin />} />
             <Route path="/Register" element={<Register />} />
+            <Route path="checkout" element={<CheckoutPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
