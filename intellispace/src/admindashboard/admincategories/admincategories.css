@@ -1,0 +1,26 @@
+.admin-category-table {
+  width: 95% !important ;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.admin-categories-button {
+  background-color: #0f50ad;
+  color: white;
+  border-radius: 16px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 25px;
+}
+
+.admin-category-Create{
+    background-color: #0f50ad;
+    color: white;
+    border-radius: 16px;
+    padding: 10px 20px;
+    width: 200px;
+    cursor: pointer;
+    margin-left: 25px;
+ margin-left: 600px;
+}

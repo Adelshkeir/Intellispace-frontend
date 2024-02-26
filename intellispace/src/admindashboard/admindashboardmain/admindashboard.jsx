@@ -5,6 +5,7 @@ import { BiNotepad } from "react-icons/bi";
 import { VscPreview } from "react-icons/vsc";
 import { useState } from "react";
 import Adminhome from "../adminhome/adminhome";
+import Admincategories from "../admincategories/admincategories";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
 import { MdCategory } from "react-icons/md";
@@ -28,7 +29,7 @@ const AdminDashboard = () => {
       case "Reviews":
         return <Adminhome />;
       case "Categories":
-        return <Adminhome />;
+        return <Admincategories />;
       default:
         return null;
     }
@@ -70,7 +71,7 @@ const AdminDashboard = () => {
           className={`Admin-sidebar-section ${
             selectedComponent === "Categories" ? "selected" : ""
           }`}
-          onClick={() => handleSidebarClick("Dashboard")}
+          onClick={() => handleSidebarClick("Categories")}
         >
           <MdCategory className="Admin-icons" />
           <h2>Categories</h2>
