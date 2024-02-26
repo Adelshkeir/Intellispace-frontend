@@ -6,6 +6,8 @@ import { removeFromCart, updateQuantity } from "../../Redux/cartSlice";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../../Redux/cartSlice";
 import axios from "axios";
+import Swal from "sweetalert2";
+
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart);
 
@@ -35,10 +37,10 @@ const Cart = () => {
     dispatch(updateQuantity({ productId: item.id, quantity: newQuantity }));
   };
 
-
-  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-
-
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   const userId = 1; // Assuming user ID is 1 for now
 
@@ -47,19 +49,39 @@ const Cart = () => {
       const orderData = {
         userId: userId,
         totalAmount: totalPrice,
-        products: cartItems
+        products: cartItems,
       };
-      
-      const response = await axios.post('http://localhost:8080/order', orderData);
-      console.log(response.data);
-      dispatch(clearCart());
-      navigate('/');
+
+      const confirmation = await Swal.fire({
+        title: "Are you sure?",
+        text: "Do you want to proceed to checkout?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, proceed to checkout!"
+      });
+
+      if (confirmation.isConfirmed) {
+        const response = await axios.post(
+          "http://localhost:8080/order",
+          orderData
+        );
+        console.log(response.data);
+        dispatch(clearCart());
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your order has been successfully placed!",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        navigate("/");
+      }
     } catch (error) {
       console.error("Error occurred while processing order:", error);
     }
-  };  
-
-
+  };
 
   return (
     <div className="m-5">
@@ -116,7 +138,9 @@ const Cart = () => {
                           className="text-danger"
                           onClick={() => handleRemoveFromCart(item)}
                         >
-                          <i className="fas fa-trash fa-lg"><FaTimes /></i>
+                          <i className="fas fa-trash fa-lg">
+                            <FaTimes />
+                          </i>
                         </a>
                       </div>
                     </div>
@@ -125,7 +149,7 @@ const Cart = () => {
               ))}
               <div className="card">
                 <div className="card-body text-center">
-                <button
+                  <button
                     type="button"
                     className="btn bg-warning1 btn-block btn-lg w-100"
                     onClick={handleClick}

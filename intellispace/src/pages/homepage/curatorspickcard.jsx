@@ -13,7 +13,7 @@ const Curatorspickcard = ({ product }) => {
         <div className="price">
         {product.price}$
         </div>
-        <a href="#" className="add-to-cart">Add to Cart</a>
+        <a href={`/Shop/${product.id}`} className="add-to-cart">View More</a>
       </figcaption>
     </figure>
   );

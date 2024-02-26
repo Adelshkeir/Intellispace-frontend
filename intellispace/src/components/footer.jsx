@@ -24,14 +24,14 @@ const Footer = () => {
           </div>
           <div>
             <a
-              href="https://www.facebook.com/p/Rayn-Look-100071182973185/"
+              href="https://www.facebook.com/adel.shkeir.79"
               target="_blank"
               className="text-warning1 me-4"
             >
               <FaFacebook style={{ fontSize: "20px" }} />
             </a>
             <a
-              href="https://www.instagram.com/rayn_look/?hl=en"
+              href="https://www.instagram.com/Instagram"
               target="_blank"
               className="text-warning1 me-4"
             >

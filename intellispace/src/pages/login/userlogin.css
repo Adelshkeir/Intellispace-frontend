@@ -14,3 +14,9 @@ background: #eee;
 .user-login-label{
     color: black;
 }
+
+.register-link-register{
+    color: #2a74ed;
+    cursor: pointer;
+    text-decoration: underline;
+}

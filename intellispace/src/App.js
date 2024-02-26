@@ -8,6 +8,9 @@ import Shoppage from "./pages/shoppage/shoppage";
 import Cart from "./pages/cart/cart";
 import UserLogin from "./pages/login/userlogin";
 import Register from "./pages/register/Register";
+import Singleproductpage from "./pages/singleproductpage/singleproductpage";
+import AdminDashboard from "./admindashboard/admindashboardmain/admindashboard";
+
 import {
   BrowserRouter,
   Routes,
@@ -15,8 +18,7 @@ import {
   Outlet,
   Navigate,
 } from "react-router-dom";
-import Singleproductpage from "./pages/singleproductpage/singleproductpage";
-import CheckoutPage from "./pages/checkoutpage/checkoutpage";
+
 const Layout = () => {
   return (
     <>
@@ -41,8 +43,9 @@ function App() {
             <Route path="/Cart" element={<Cart />} />
             <Route path="/Login" element={<UserLogin />} />
             <Route path="/Register" element={<Register />} />
-            <Route path="checkout" element={<CheckoutPage />} />
           </Route>
+
+          <Route path="/Admin" element={<AdminDashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
