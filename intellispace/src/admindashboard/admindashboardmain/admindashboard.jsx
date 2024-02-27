@@ -6,6 +6,7 @@ import { VscPreview } from "react-icons/vsc";
 import { useState } from "react";
 import Adminhome from "../adminhome/adminhome";
 import Admincategories from "../admincategories/admincategories";
+import Adminproducts from "../adminproducts/adminproducts";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
 import { MdCategory } from "react-icons/md";
@@ -23,7 +24,7 @@ const AdminDashboard = () => {
       case "Dashboard":
         return <Adminhome />;
       case "Products":
-        return <Adminhome />;
+        return <Adminproducts />;
       case "Orders":
         return <Adminhome />;
       case "Reviews":
@@ -81,7 +82,7 @@ const AdminDashboard = () => {
           className={`Admin-sidebar-section ${
             selectedComponent === "Products" ? "selected" : ""
           }`}
-          onClick={() => handleSidebarClick("Dashboard")}
+          onClick={() => handleSidebarClick("Products")}
         >
           <HiMiniShoppingBag className="Admin-icons" />
           <h2>Products</h2>

@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { clearCart } from "../../Redux/cartSlice";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { MdRemove, MdAdd } from "react-icons/md"; // Importing the MdRemove and MdAdd icons from React Icons
+import "./cart.css";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart);
@@ -108,10 +110,10 @@ const Cart = () => {
                       </div>
                       <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
                         <button
-                          className="btn btn-link px-2"
+                          className="btn btn-link px-2 cart-arrows" 
                           onClick={() => handleDecrementQuantity(item)}
                         >
-                          <i className="fas fa-minus"></i>
+                          <MdRemove /> {/* Using MdRemove icon for decrease */}
                         </button>
                         <input
                           id="form1"
@@ -123,10 +125,10 @@ const Cart = () => {
                           onChange={(e) => handleQuantityChange(e, item)}
                         />
                         <button
-                          className="btn btn-link px-2"
+                          className="btn btn-link px-2 cart-arrows"
                           onClick={() => handleIncrementQuantity(item)}
                         >
-                          <i className="fas fa-plus"></i>
+                          <MdAdd /> {/* Using MdAdd icon for increase */}
                         </button>
                       </div>
                       <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">

@@ -1,0 +1,6 @@
+.cart-arrows{
+    background-color: blue !important;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
