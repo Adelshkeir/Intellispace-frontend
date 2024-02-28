@@ -53,11 +53,11 @@ const Cart = () => {
         totalAmount: totalPrice,
         products: cartItems,
       };
-
+      console.log("Request sent to backend:", orderData)
       const confirmation = await Swal.fire({
         title: "Are you sure?",
         text: "Do you want to proceed to checkout?",
-        icon: "warning",
+        icon: "question",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",

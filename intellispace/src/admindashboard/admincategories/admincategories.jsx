@@ -1,5 +1,3 @@
-// Admincategories.jsx
-
 import React, { useState, useEffect } from "react";
 import { Modal, Form, Button, Table } from "react-bootstrap";
 import axios from "axios";
@@ -61,9 +59,12 @@ const Admincategories = () => {
 
   const handleEditSubmit = async () => {
     try {
-      const response = await axios.put(`http://localhost:8080/category/${editingCategory.id}`, {
-        name: categoryName,
-      });
+      const response = await axios.put(
+        `http://localhost:8080/category/${editingCategory.id}`,
+        {
+          name: categoryName,
+        }
+      );
       console.log("Category edit response:", response.data);
       handleCloseModal();
       fetchCategories();
@@ -111,7 +112,9 @@ const Admincategories = () => {
 
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>{editingCategory ? 'Edit Category' : 'Create Category'}</Modal.Title>
+          <Modal.Title>
+            {editingCategory ? "Edit Category" : "Create Category"}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -131,7 +134,7 @@ const Admincategories = () => {
               type="button"
               onClick={editingCategory ? handleEditSubmit : handleSubmit}
             >
-              {editingCategory ? 'Save Changes' : 'Submit'}
+              {editingCategory ? "Save Changes" : "Submit"}
             </Button>
           </Form>
         </Modal.Body>

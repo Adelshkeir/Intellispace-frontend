@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
@@ -18,6 +19,8 @@ import {
   Outlet,
   Navigate,
 } from "react-router-dom";
+import AdminLogin from "./admindashboard/adminlogin/adminlogin";
+import { useSelector } from "react-redux";
 
 const Layout = () => {
   return (
@@ -30,6 +33,8 @@ const Layout = () => {
 };
 
 function App() {
+  const token = useSelector((state) => state.auth.token);
+  const isAdminLoggedIn = token != null;
   return (
     <div className="App">
       <BrowserRouter>
@@ -45,7 +50,23 @@ function App() {
             <Route path="/Register" element={<Register />} />
           </Route>
 
-          <Route path="/Admin" element={<AdminDashboard />} />
+          <Route
+            path="/adminlogin"
+            element={
+              isAdminLoggedIn ? <Navigate to={"/admin"} /> : <AdminLogin />
+            }
+          />
+
+          <Route
+            path="/admin"
+            element={
+              isAdminLoggedIn ? (
+                <AdminDashboard />
+              ) : (
+                <Navigate to={"/adminlogin"} />
+              )
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

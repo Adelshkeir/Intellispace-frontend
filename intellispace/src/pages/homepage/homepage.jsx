@@ -24,7 +24,12 @@ const Home = () => {
   return (
     <div className="homepage-main">
       <div className="homepage-firstsection" data-aos="fade-left">
-        <div className="homepage-firstsection-info">
+
+        <img
+          src="https://protecsecuritysystems.com/wp-content/uploads/cache/2019/09/home-security-camera-front-home/2336279802.jpg"
+          alt="showing a camera"
+        />
+                <div className="homepage-firstsection-info">
           <p>EUFY VIDEO CAMERA 2K</p>
           <h1 className="homepage-firstsection-title">
             See Who's There <br /> Before The Ring
@@ -37,10 +42,6 @@ const Home = () => {
             <button>Buy Now</button>
           </Link>
         </div>
-        <img
-          src="https://protecsecuritysystems.com/wp-content/uploads/cache/2019/09/home-security-camera-front-home/2336279802.jpg"
-          alt="showing a camera"
-        />
       </div>
 
       <div className="homepage-secondsection" data-aos="fade-left">

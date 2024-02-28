@@ -1,3 +1,15 @@
+.admin-product-Create {
+  background-color: #0f50ad;
+  color: white;
+  border-radius: 16px;
+  padding: 7px 15px;
+  width: 200px;
+  cursor: pointer;
+  margin-left: 25px;
+  margin-left: 600px;
+  font-size: 20px !important;
+}
+
 .products-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -13,13 +25,13 @@
 
 .admin-product-bg-image {
   border-radius: 15px 15px 0 0;
-  max-width: 100%;
 }
 
 .admin-product-img-fluid {
   max-width: 100%;
   width: 100%;
   max-height: 320px;
+  min-height: 320px;
 }
 
 .admin-product-title {
@@ -36,7 +48,7 @@
 }
 
 .admin-product-card button {
-  background-color: #0f50ad;
+  background-color: #0f50ad !important;
   color: white;
   border-radius: 16px !important;
   border: none;

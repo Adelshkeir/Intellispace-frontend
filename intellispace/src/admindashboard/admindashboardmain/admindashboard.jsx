@@ -7,6 +7,7 @@ import { useState } from "react";
 import Adminhome from "../adminhome/adminhome";
 import Admincategories from "../admincategories/admincategories";
 import Adminproducts from "../adminproducts/adminproducts";
+import Adminorders from "../adminorders/adminorders";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
 import { MdCategory } from "react-icons/md";
@@ -26,7 +27,7 @@ const AdminDashboard = () => {
       case "Products":
         return <Adminproducts />;
       case "Orders":
-        return <Adminhome />;
+        return <Adminorders />;
       case "Reviews":
         return <Adminhome />;
       case "Categories":
@@ -92,7 +93,7 @@ const AdminDashboard = () => {
           className={`Admin-sidebar-section ${
             selectedComponent === "Orders" ? "selected" : ""
           }`}
-          onClick={() => handleSidebarClick("Dashboard")}
+          onClick={() => handleSidebarClick("Orders")}
         >
           <BiNotepad className="Admin-icons" />
           <h2>Orders</h2>
