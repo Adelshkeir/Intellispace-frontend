@@ -7,15 +7,16 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useWindowScroll } from "react-use";
 import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
 
 const Navigation = () => {
+  const cartItems = useSelector((state) => state.cart);
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    
     const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token); 
+    setIsLoggedIn(!!token);
     AOS.init({ duration: 500 });
   }, []);
 
@@ -30,7 +31,7 @@ const Navigation = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.clear();
-        setIsLoggedIn(false); 
+        setIsLoggedIn(false);
         window.location.href = "/login";
       }
     });
@@ -51,7 +52,11 @@ const Navigation = () => {
   return (
     <div className="w-75 m-auto" data-aos="fade-right">
       <Navbar expand="lg" className="navbar">
-        <Navbar.Brand as={Link} to="/" className="d-flex justify-content-baseline">
+        <Navbar.Brand
+          as={Link}
+          to="/"
+          className="d-flex justify-content-baseline"
+        >
           <img
             src={i20}
             alt=""
@@ -60,8 +65,14 @@ const Navigation = () => {
             style={{ maxHeight: "100px" }}
           />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="justify-self-end" />
-        <Navbar.Collapse id="responsive-navbar-nav " className="justify-content-end">
+        <Navbar.Toggle
+          aria-controls="responsive-navbar-nav"
+          className="justify-self-end"
+        />
+        <Navbar.Collapse
+          id="responsive-navbar-nav "
+          className="justify-content-end"
+        >
           <Nav className="mr-auto">
             <NavLink
               as={Link}
@@ -95,11 +106,15 @@ const Navigation = () => {
             >
               Contact
             </NavLink>
-            {isLoggedIn ? ( 
-              <NavLink className="nav-link" onClick={handleLogout} style={{ fontSize: "1.1rem" }}>
+            {isLoggedIn ? (
+              <NavLink
+                className="nav-link"
+                onClick={handleLogout}
+                style={{ fontSize: "1.1rem" }}
+              >
                 Logout
               </NavLink>
-            ) : ( 
+            ) : (
               <NavLink
                 as={Link}
                 to="/login"
@@ -109,7 +124,12 @@ const Navigation = () => {
                 Login
               </NavLink>
             )}
-            <NavLink as={Link} to="/cart" className="nav-link " style={{ fontSize: "1.1rem" }}>
+            <NavLink
+              as={Link}
+              to="/cart"
+              className="nav-link "
+              style={{ fontSize: "1.1rem" }}
+            >
               <FaShoppingCart className="text-warning3" />
               <span
                 className="cart-counter w-100"
@@ -121,7 +141,7 @@ const Navigation = () => {
                   fontSize: "1rem",
                 }}
               >
-                0
+                {cartItems.length}
               </span>
             </NavLink>
           </Nav>

@@ -71,3 +71,35 @@
   color: #2a74ed;
   font-size: 18px;
 }
+
+
+
+
+
+@media (max-width: 768px) {
+  .shoppage-main {
+    width: 90%; 
+  }
+
+  .shoppage-products-categories-container {
+    grid-template-columns: 100%; 
+  }
+
+  .shoppage-categories-container,
+  .productcardcontainer {
+    width: 100%; 
+  }
+
+  .shoppage-products-container {
+    grid-template-columns: 1fr; 
+  }
+
+  .shoppage-categories-container h5,
+  .shoppage-categories-container p {
+    margin-left: 10px; 
+  }
+
+  .productcardcontainer img {
+    width: 100%; 
+  }
+}

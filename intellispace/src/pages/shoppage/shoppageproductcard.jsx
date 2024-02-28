@@ -1,4 +1,12 @@
 const Shoppageproductcard = ({ product }) => {
+  const truncateDescription = (description) => {
+    const words = description.split(' ');
+    if (words.length > 15) {
+      return words.slice(0, 15).join(' ') + '...';
+    } else {
+      return description;
+    }
+  };
   return (
     <figure className="snip1249">
       <div className="image">
@@ -7,7 +15,7 @@ const Shoppageproductcard = ({ product }) => {
       </div>
       <figcaption>
         <h3>{product.name}</h3>
-        <p>{product.description}</p>
+        <p>{truncateDescription(product.description)}</p> 
         <div className="price">
           {product.price}$
         </div>

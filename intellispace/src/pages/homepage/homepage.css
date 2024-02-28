@@ -242,10 +242,14 @@ figure.snip1249 * {
 }
 figure.snip1249 .image {
   position: relative;
+  width: 100%;
+  height: 270px;
+  
 }
 figure.snip1249 img {
-  max-width: 100%;
-  vertical-align: top;
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; 
 }
 figure.snip1249 i {
   position: absolute;
@@ -256,11 +260,13 @@ figure.snip1249 i {
   z-index: 2;
   -webkit-transition-delay: 0;
   transition-delay: 0;
+  
 }
 figure.snip1249 h3 {
   margin: 0;
   font-weight: 500;
   text-transform: uppercase;
+  font-size: 1.2em;
 }
 figure.snip1249:before,
 figure.snip1249:after {
