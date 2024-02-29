@@ -27,7 +27,7 @@ const Curatorspickcarousel = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/product/curators_pick")
+      .get(process.env.REACT_APP_BACKEND_URI + "/product/curators_pick")
       .then((res) => {
         console.log(res.data);
         setProducts(res.data);

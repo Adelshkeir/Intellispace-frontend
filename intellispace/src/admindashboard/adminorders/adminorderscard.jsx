@@ -10,7 +10,9 @@ const Adminordercard = ({ order }) => {
 
   const fetchOrderItems = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/orderitem/${order.id}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URI}/orderitem/${order.id}`
+      );
       setOrderItems(response.data);
       console.log(response.data);
     } catch (error) {
@@ -24,15 +26,15 @@ const Adminordercard = ({ order }) => {
       <td>{order.User.location}</td>
       <td>{order.User.email}</td>
       <td>{order.User.phonenumber}</td>
-      <td >
+      <td>
         {orderItems.map((item, index) => (
-            <div key={index} >
-  {item.Product.name}   {item.quantity}x 
-</div>
+          <div key={index}>
+            {item.Product.name} {item.quantity}x
+          </div>
         ))}
       </td>
     </tr>
-  ); 
+  );
 };
 
 export default Adminordercard;

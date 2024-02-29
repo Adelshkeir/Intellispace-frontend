@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import {setToken} from "../../Redux/autheslice";
+import { setToken } from "../../Redux/autheslice";
 import axios from "axios";
 import "./adminlogin.css";
 const AdminLogin = () => {
@@ -14,10 +14,13 @@ const AdminLogin = () => {
     console.log("handleLogin function called with username:", username);
 
     try {
-      const response = await axios.post("http://localhost:8080/admin/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        process.env.REACT_APP_BACKEND_URI + "/admin/login",
+        {
+          username,
+          password,
+        }
+      );
 
       console.log("Received response status from login API:", response.status);
       console.log("Received response data from login API:", response.data);
@@ -44,14 +47,10 @@ const AdminLogin = () => {
 
   useEffect(() => {
     if (redirected) {
-      setRedirected(false); 
+      setRedirected(false);
       window.location.href = "/admin";
     }
   }, [redirected]);
-
-
-
-
 
   return (
     <section className="vh-100 vw-100 admin-login-container">

@@ -35,6 +35,7 @@ const Layout = () => {
 function App() {
   const token = useSelector((state) => state.auth.token);
   const isAdminLoggedIn = token != null;
+
   return (
     <div className="App">
       <BrowserRouter>

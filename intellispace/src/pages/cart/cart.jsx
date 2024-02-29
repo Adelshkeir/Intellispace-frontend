@@ -44,7 +44,7 @@ const Cart = () => {
     0
   );
 
-  const userId = 1; // Assuming user ID is 1 for now
+  const userId = 1; 
 
   const handleClick = async () => {
     try {
@@ -53,7 +53,7 @@ const Cart = () => {
         totalAmount: totalPrice,
         products: cartItems,
       };
-      console.log("Request sent to backend:", orderData)
+      console.log("Request sent to backend:", orderData);
       const confirmation = await Swal.fire({
         title: "Are you sure?",
         text: "Do you want to proceed to checkout?",
@@ -61,12 +61,12 @@ const Cart = () => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, proceed to checkout!"
+        confirmButtonText: "Yes, proceed to checkout!",
       });
 
       if (confirmation.isConfirmed) {
         const response = await axios.post(
-          "http://localhost:8080/order",
+          process.env.REACT_APP_BACKEND_URI + "/order",
           orderData
         );
         console.log(response.data);
@@ -76,7 +76,7 @@ const Cart = () => {
           icon: "success",
           title: "Your order has been successfully placed!",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
         navigate("/");
       }
@@ -100,7 +100,7 @@ const Cart = () => {
                     <div className="row d-flex justify-content-between align-items-center">
                       <div className="col-md-2 col-lg-2 col-xl-2">
                         <img
-                          src={`http://localhost:8080/${item.image}`}
+                          src={`${process.env.REACT_APP_BACKEND_URI}/${item.image}`}
                           className="img-fluid rounded-3"
                           alt={item.name}
                         />
@@ -110,7 +110,7 @@ const Cart = () => {
                       </div>
                       <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
                         <button
-                          className="btn btn-link px-2 cart-arrows" 
+                          className="btn btn-link px-2 cart-arrows"
                           onClick={() => handleDecrementQuantity(item)}
                         >
                           <MdRemove /> {/* Using MdRemove icon for decrease */}

@@ -15,10 +15,13 @@ const UserLogin = () => {
     console.log("handleLogin function called with username:", username);
 
     try {
-      const response = await axios.post("http://localhost:8080/user/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        process.env.REACT_APP_BACKEND_URI + "/user/login",
+        {
+          username,
+          password,
+        }
+      );
 
       console.log("Received response status from login API:", response.status);
       console.log("Received response data from login API:", response.data);
@@ -100,7 +103,13 @@ const UserLogin = () => {
                 Sign in
               </button>
             </form>
-            <p className="register-link">Don't have an account? <Link to="/register"><span className="register-link-register">Register here</span></Link>.</p>
+            <p className="register-link">
+              Don't have an account?{" "}
+              <Link to="/register">
+                <span className="register-link-register">Register here</span>
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </div>

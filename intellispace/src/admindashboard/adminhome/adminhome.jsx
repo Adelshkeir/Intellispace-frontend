@@ -11,9 +11,17 @@ const Adminhome = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const orderResponse = await axios.get("http://localhost:8080/order");
-        const productResponse = await axios.get("http://localhost:8080/product");
-        const categoryResponse = await axios.get("http://localhost:8080/category");
+        const orderResponse = await axios.get(
+          process.env.REACT_APP_BACKEND_URI + "/order"
+        );
+        const productResponse = await axios.get(
+          process.env.REACT_APP_BACKEND_URI + "/product"
+        );
+        const categoryResponse = await axios.get(
+          process.env.REACT_APP_BACKEND_URI + "/category"
+        );
+
+        console.log(productResponse);
 
         setOrderCount(orderResponse.data.length);
         setProductCount(productResponse.data.length);

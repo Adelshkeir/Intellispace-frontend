@@ -10,7 +10,7 @@ const Shoppage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/category")
+      .get(process.env.REACT_APP_BACKEND_URI + "/category")
       .then((res) => {
         console.log(res.data);
         setCategories(res.data);
@@ -23,7 +23,9 @@ const Shoppage = () => {
   useEffect(() => {
     if (categoryName) {
       axios
-        .get(`http://localhost:8080/product/category/${categoryName}`)
+        .get(
+          `${process.env.REACT_APP_BACKEND_URI}/product/category/${categoryName}`
+        )
         .then((res) => {
           console.log(res.data);
           setProducts(res.data);
@@ -49,10 +51,7 @@ const Shoppage = () => {
           <h5>Categories</h5>
           <p onClick={() => handleCategoryClick("All")}>All</p>
           {categories.map((category, index) => (
-            <p
-              key={index}
-              onClick={() => handleCategoryClick(category.name)}
-            >
+            <p key={index} onClick={() => handleCategoryClick(category.name)}>
               {category.name}
             </p>
           ))}

@@ -10,7 +10,9 @@ const Adminproductcard = ({ product, fetchProducts }) => {
   const [productDescription, setProductDescription] = useState(
     product.description
   );
-  const [curatorsPick, setCuratorsPick] = useState(product.curators_pick || false); // Initialize with product's curators_pick value, default to false if undefined
+  const [curatorsPick, setCuratorsPick] = useState(
+    product.curators_pick || false
+  ); // Initialize with product's curators_pick value, default to false if undefined
 
   const handleDelete = async () => {
     try {
@@ -25,7 +27,9 @@ const Adminproductcard = ({ product, fetchProducts }) => {
       });
 
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:8080/product/${product.id}`);
+        await axios.delete(
+          `${process.env.REACT_APP_BACKEND_URI}/product/${product.id}`
+        );
 
         Swal.fire({
           title: "Deleted!",
@@ -52,7 +56,7 @@ const Adminproductcard = ({ product, fetchProducts }) => {
   const handleEditSubmit = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:8080/product/${product.id}`,
+        `${process.env.REACT_APP_BACKEND_URI}/product/${product.id}`,
         {
           name: productName,
           price: productPrice,
@@ -76,7 +80,7 @@ const Adminproductcard = ({ product, fetchProducts }) => {
     <div className="admin-product-card">
       <div className="admin-product-bg-image hover-overlay ripple ripple-surface ripple-surface-light">
         <img
-          src={`http://localhost:8080/${product.image}`}
+          src={`${process.env.REACT_APP_BACKEND_URI}/${product.image}`}
           className="admin-product-img-fluid"
           alt="Laptop"
         />

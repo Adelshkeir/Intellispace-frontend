@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {  Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import axios from "axios";
 import "./adminorders.css";
 import Adminordercard from "./adminorderscard";
@@ -12,7 +12,9 @@ const Adminorders = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/order");
+      const response = await axios.get(
+        process.env.REACT_APP_BACKEND_URI + "/order"
+      );
       setOrders(response.data);
       console.log(response.data);
     } catch (error) {
@@ -32,15 +34,9 @@ const Adminorders = () => {
         </tr>
       </thead>
       <tbody>
-        
-      {orders.map((order, index) => (
-          <Adminordercard
-          key={index}
-order={order}
-          />
+        {orders.map((order, index) => (
+          <Adminordercard key={index} order={order} />
         ))}
-
-
       </tbody>
     </Table>
   );

@@ -17,7 +17,9 @@ const Admincategories = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/category");
+      const response = await axios.get(
+        process.env.REACT_APP_BACKEND_URI + "/category"
+      );
       setCategories(response.data);
       setCategoryLoading(false);
     } catch (error) {
@@ -40,9 +42,12 @@ const Admincategories = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("http://localhost:8080/category", {
-        name: categoryName,
-      });
+      const response = await axios.post(
+        process.env.REACT_APP_BACKEND_URI + "/category",
+        {
+          name: categoryName,
+        }
+      );
       console.log("Category creation response:", response.data);
       handleCloseModal();
       fetchCategories();
@@ -60,7 +65,7 @@ const Admincategories = () => {
   const handleEditSubmit = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:8080/category/${editingCategory.id}`,
+        `${process.env.REACT_APP_BACKEND_URI}/category/${editingCategory.id}`,
         {
           name: categoryName,
         }

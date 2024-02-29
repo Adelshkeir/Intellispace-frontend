@@ -25,7 +25,9 @@ const ProductsPage = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/product");
+      const response = await axios.get(
+        process.env.REACT_APP_BACKEND_URI + "/product"
+      );
       setProducts(response.data);
       setProductLoading(false);
     } catch (error) {
@@ -36,7 +38,9 @@ const ProductsPage = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/category");
+      const response = await axios.get(
+        process.env.REACT_APP_BACKEND_URI + "/category"
+      );
       setCategories(response.data);
       setCategoryLoading(false);
     } catch (error) {
@@ -75,7 +79,7 @@ const ProductsPage = () => {
       formData.append("categoryId", selectedCategory);
 
       const response = await axios.post(
-        "http://localhost:8080/product",
+        process.env.REACT_APP_BACKEND_URI + "/product",
         formData,
         {
           headers: {
@@ -108,7 +112,7 @@ const ProductsPage = () => {
       formData.append("description", productDescription);
       formData.append("curators_pick", curatorsPick);
       const response = await axios.put(
-        `http://localhost:8080/product/${editingProduct.id}`,
+        `${process.env.REACT_APP_BACKEND_URI}/product/${editingProduct.id}`,
         formData,
         {
           headers: {

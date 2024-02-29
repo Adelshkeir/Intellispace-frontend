@@ -23,7 +23,7 @@ const Singleproductpage = () => {
 
   const fetchProduct = (productId) => {
     axios
-      .get(`http://localhost:8080/product/${productId}`)
+      .get(`${process.env.REACT_APP_BACKEND_URI}/product/${productId}`)
       .then((res) => {
         console.log(res.data);
         setProduct(res.data);
@@ -47,7 +47,6 @@ const Singleproductpage = () => {
       if (result.isConfirmed) {
         window.location.href = "/cart";
       } else {
-       
       }
     });
   };
@@ -63,11 +62,14 @@ const Singleproductpage = () => {
 
   const handleSubmitReview = async () => {
     try {
-      const response = await axios.post("http://localhost:8080/review", {
-        productId: product.id,
-        message: reviewContent,
-        userId: '1', 
-      });
+      const response = await axios.post(
+        process.env.REACT_APP_BACKEND_URI + "/review",
+        {
+          productId: product.id,
+          message: reviewContent,
+          userId: "1",
+        }
+      );
       console.log("Review creation response:", response.data);
       handleCloseReviewModal();
       fetchProduct(productID); // Refetch product data after review creation
@@ -80,7 +82,7 @@ const Singleproductpage = () => {
     <div className="singleproductpage-main">
       {product && (
         <div className="singleproductpage-product">
-          <img src={`http://localhost:8080/${product.image}`} />
+          <img src={`${process.env.REACT_APP_BACKEND_URI}/${product.image}`} />
           <div className="singleproductpage-product-info">
             <h1>{product.name}</h1>
 
@@ -93,8 +95,12 @@ const Singleproductpage = () => {
         </div>
       )}
       <div className="Reviews-title-line"></div>
-      <h2 className="Reviews-title">Reviews ({product && product.Reviews.length})</h2>
-      <h5 className="Reviews-title-create" onClick={handleWriteReviewClick}>Write A Review</h5>
+      <h2 className="Reviews-title">
+        Reviews ({product && product.Reviews.length})
+      </h2>
+      <h5 className="Reviews-title-create" onClick={handleWriteReviewClick}>
+        Write A Review
+      </h5>
       <div className="Reviews">
         {product &&
           product.Reviews.map((review) => (
