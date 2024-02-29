@@ -14,6 +14,9 @@ const Singleproductpage = () => {
   const [reviewContent, setReviewContent] = useState("");
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
+  const token = localStorage.getItem("token");
+  const userId = token ? JSON.parse(atob(token.split(".")[1])).id : null;
+  
   const isInCart =
     cartItems.filter((item) => item.id === product?.id).length > 0;
 
@@ -46,13 +49,17 @@ const Singleproductpage = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.href = "/cart";
-      } else {
       }
     });
   };
 
   const handleWriteReviewClick = () => {
-    setShowReviewModal(true);
+    if (!token) {
+      // Redirect to login page if not logged in
+      window.location.href = "/login";
+    } else {
+      setShowReviewModal(true);
+    }
   };
 
   const handleCloseReviewModal = () => {
@@ -63,16 +70,16 @@ const Singleproductpage = () => {
   const handleSubmitReview = async () => {
     try {
       const response = await axios.post(
-        process.env.REACT_APP_BACKEND_URI + "/review",
+        `${process.env.REACT_APP_BACKEND_URI}/review`,
         {
           productId: product.id,
           message: reviewContent,
-          userId: "1",
+          userId: userId, 
         }
       );
       console.log("Review creation response:", response.data);
       handleCloseReviewModal();
-      fetchProduct(productID); // Refetch product data after review creation
+      fetchProduct(productID);
     } catch (error) {
       console.error("Error creating review:", error);
     }

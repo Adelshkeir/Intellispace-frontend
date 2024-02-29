@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
@@ -12,9 +12,21 @@ import "./cart.css";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const [, payloadBase64] = token.split(".");
+      const payloadJson = atob(payloadBase64);
+      const payload = JSON.parse(payloadJson);
+      const userId = payload.id;
+      console.log("User ID:", userId);
+    } else {
+      console.log("Token not found in localStorage.");
+    }
+  }, []);
 
   const handleRemoveFromCart = (item) => {
     dispatch(removeFromCart(item));
@@ -44,10 +56,20 @@ const Cart = () => {
     0
   );
 
-  const userId = 1; 
-
   const handleClick = async () => {
     try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.log("Token not found in localStorage.");
+        window.location.href = "/login"; 
+        return; 
+      }
+
+      const [, payloadBase64] = token.split(".");
+      const payloadJson = atob(payloadBase64);
+      const payload = JSON.parse(payloadJson);
+      const userId = payload.id;
+
       const orderData = {
         userId: userId,
         totalAmount: totalPrice,
