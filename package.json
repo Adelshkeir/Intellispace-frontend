@@ -2,6 +2,7 @@
   "name": "intellispace",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/",
   "dependencies": {
     "@blacklab/react-image-magnify": "^4.1.1",
     "@reduxjs/toolkit": "^2.2.1",
