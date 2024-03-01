@@ -90,7 +90,7 @@ const Adminproductcard = ({ product, fetchProducts }) => {
       </div>
       <div className="admin-product-body">
         <h5 className="admin-product-title">{product.name}</h5>
-        <p className="admin-product-text">{product.price}</p>
+        <p className="admin-product-text">{product.price}$</p>
         <p className="admin-product-text">{product.description}</p>
       </div>
       <div className="admin-product-body">
