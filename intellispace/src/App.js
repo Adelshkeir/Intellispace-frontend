@@ -11,7 +11,7 @@ import UserLogin from "./pages/login/userlogin";
 import Register from "./pages/register/Register";
 import Singleproductpage from "./pages/singleproductpage/singleproductpage";
 import AdminDashboard from "./admindashboard/admindashboardmain/admindashboard";
-
+import NotFound from "./pages/notfound/NotFound";
 import {
   BrowserRouter,
   Routes,
@@ -68,6 +68,11 @@ function App() {
               )
             }
           />
+
+
+<Route path="*" element={<NotFound />} />
+
+
         </Routes>
       </BrowserRouter>
     </div>
