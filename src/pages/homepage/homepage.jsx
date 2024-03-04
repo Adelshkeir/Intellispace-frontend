@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ContactUsModal from "./contactuspopup";
+import TawkTo from "../../components/tawk";
 
 const Home = () => {
   const [showContactModal, setShowContactModal] = useState();
@@ -115,6 +116,7 @@ const Home = () => {
         show={showContactModal}
         setShow={setShowContactModal}
       />
+      <TawkTo />
     </div>
   );
 };
