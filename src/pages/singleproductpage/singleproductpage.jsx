@@ -89,7 +89,7 @@ const Singleproductpage = () => {
     <div className="singleproductpage-main">
       {product && (
         <div className="singleproductpage-product">
-          <img src={`${process.env.REACT_APP_BACKEND_URI}/${product.image}`} />
+          <img           src={product.image} />
           <div className="singleproductpage-product-info">
             <h1>{product.name}</h1>
 

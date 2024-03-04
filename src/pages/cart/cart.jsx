@@ -122,7 +122,7 @@ const Cart = () => {
                     <div className="row d-flex justify-content-between align-items-center">
                       <div className="col-md-2 col-lg-2 col-xl-2">
                         <img
-                          src={`${process.env.REACT_APP_BACKEND_URI}/${item.image}`}
+                          src={item.image}
                           className="img-fluid rounded-3"
                           alt={item.name}
                         />
