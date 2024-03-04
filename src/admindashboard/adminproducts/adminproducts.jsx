@@ -3,6 +3,21 @@ import { Modal, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import Adminproductcard from "./adminproductcard";
 import "./adminproducts.css";
+import firebase from 'firebase/compat/app'; // Modify this line
+import 'firebase/compat/storage'; // Modify this line
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAV0usA005veQhiX_GoclF54BjueFel3ik",
+  authDomain: "intelispace-c108d.firebaseapp.com",
+  projectId: "intelispace-c108d",
+  storageBucket: "intelispace-c108d.appspot.com",
+  messagingSenderId: "765371645211",
+  appId: "1:765371645211:web:f2ec71d652ef8f3b7d27be"
+};
+
+const app = firebase.initializeApp(firebaseConfig);
+
+const storage = firebase.storage();
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -70,16 +85,26 @@ const ProductsPage = () => {
   };
 
   const handleSubmit = async () => {
+    console.log("ProductName:", productName);
+    console.log("ProductPrice:", productPrice);
+    console.log("ProductDescription:", productDescription);
+    console.log("SelectedCategory:", selectedCategory);
+    
     try {
       const formData = new FormData();
       formData.append("name", productName);
       formData.append("price", productPrice);
       formData.append("description", productDescription);
-      formData.append("image", productImage);
+      console.log("ProductImage:", productImage);
+      const imageRef = storage.ref(`images/${productImage.name}`);
+      await imageRef.put(productImage);
+      const imageUrl = await imageRef.getDownloadURL();
+      console.log(imageUrl)
+      formData.append("image", imageUrl);
       formData.append("categoryId", selectedCategory);
-
+    
       const response = await axios.post(
-        process.env.REACT_APP_BACKEND_URI + "/product",
+        `${process.env.REACT_APP_BACKEND_URI}/product`,
         formData,
         {
           headers: {
@@ -93,8 +118,11 @@ const ProductsPage = () => {
     } catch (error) {
       console.error("Error creating product:", error);
     }
+    console.log("ProductImage:", productImage);
   };
-
+  
+  
+  
   const handleEditButtonClick = (product) => {
     setEditingProduct(product);
     setShowModal(true);

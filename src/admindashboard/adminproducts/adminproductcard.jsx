@@ -12,7 +12,7 @@ const Adminproductcard = ({ product, fetchProducts }) => {
   );
   const [curatorsPick, setCuratorsPick] = useState(
     product.curators_pick || false
-  ); // Initialize with product's curators_pick value, default to false if undefined
+  ); 
 
   const handleDelete = async () => {
     try {
@@ -80,7 +80,7 @@ const Adminproductcard = ({ product, fetchProducts }) => {
     <div className="admin-product-card">
       <div className="admin-product-bg-image hover-overlay ripple ripple-surface ripple-surface-light">
         <img
-          src={`${process.env.REACT_APP_BACKEND_URI}/${product.image}`}
+          src={product.image}
           className="admin-product-img-fluid"
           alt="Laptop"
         />
