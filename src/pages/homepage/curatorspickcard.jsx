@@ -4,10 +4,7 @@ const Curatorspickcard = ({ product }) => {
   return (
     <figure className="snip1249">
       <div className="image">
-        <img
-     src={product.image}
-          alt={product.name}
-        />
+        <img src={product.image} alt={product.name} />
         <i className="ion-ios-basketball-outline"></i>
       </div>
       <figcaption>

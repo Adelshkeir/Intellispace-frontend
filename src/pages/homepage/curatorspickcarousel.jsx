@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
+import "./homepage.css"
 import axios from "axios";
 import Curatorspickcard from "./curatorspickcard";
 
@@ -52,6 +52,7 @@ const Curatorspickcarousel = () => {
       containerClass="carousel-container"
       dotListClass="custom-dot-list-style"
       itemClass={`carousel-item-padding-40-px`}
+      className="raoul"
     >
       {products.map((product, index) => (
         <Curatorspickcard key={index} product={product} />
