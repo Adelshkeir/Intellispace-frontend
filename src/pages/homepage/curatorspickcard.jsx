@@ -5,7 +5,7 @@ const Curatorspickcard = ({ product }) => {
     <figure className="snip1249">
       <div className="image">
         <img
-          src={`${process.env.REACT_APP_BACKEND_URI}/${product.image}`}
+     src={product.image}
           alt={product.name}
         />
         <i className="ion-ios-basketball-outline"></i>
