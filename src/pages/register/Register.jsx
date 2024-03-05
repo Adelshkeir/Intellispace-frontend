@@ -99,7 +99,7 @@ const Register = () => {
                   className="form-label user-login-label"
                   htmlFor="password"
                 >
-                  Password
+                  Password , should have 4 numbers , 4 letters with 1 capital , and a special character  
                 </label>
               </div>
               <div className="form-outline mb-4">
