@@ -2,16 +2,13 @@ import { FaFacebook, FaInstagram } from "react-icons/fa";
 import "./Components.css";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 const Footer = () => {
-  useEffect(() => {
-    AOS.init({ duration: 1500 });
-  }, []);
+
   return (
     <>
       <footer
-        data-aos="fade-left"
+
         className="text-center text-lg-start text-dark"
         style={{ backgroundColor: "transparent" }}
       >
