@@ -5,7 +5,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyBJRiwL87PHG39TLvdeUqnt_CQVlEEO0as",
   authDomain: "intelispace-82b49.firebaseapp.com",
   projectId: "intelispace-82b49",
-  storageBucket: "intelispace-82b49.appspot.com",
+  storageBucket: "intelispace-82b49.firebasestorage.app",
   messagingSenderId: "57308685445",
   appId: "1:57308685445:web:bff63199d67eb17114f5ec",
   measurementId: "G-CMK3C30BH5"
