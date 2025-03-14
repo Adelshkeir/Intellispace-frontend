@@ -2,12 +2,13 @@ import firebase from "firebase/app";
 import "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAV0usA005veQhiX_GoclF54BjueFel3ik",
-  authDomain: "intelispace-c108d.firebaseapp.com",
-  projectId: "intelispace-c108d",
-  storageBucket: "intelispace-c108d.appspot.com",
-  messagingSenderId: "765371645211",
-  appId: "1:765371645211:web:f2ec71d652ef8f3b7d27be",
+  apiKey: "AIzaSyBJRiwL87PHG39TLvdeUqnt_CQVlEEO0as",
+  authDomain: "intelispace-82b49.firebaseapp.com",
+  projectId: "intelispace-82b49",
+  storageBucket: "intelispace-82b49.firebasestorage.app",
+  messagingSenderId: "57308685445",
+  appId: "1:57308685445:web:bff63199d67eb17114f5ec",
+  measurementId: "G-CMK3C30BH5"
 };
 
 const app = firebase.initializeApp(firebaseConfig);
