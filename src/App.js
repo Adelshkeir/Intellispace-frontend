@@ -51,15 +51,18 @@ function App() {
             <Route path="/Register" element={<Register />} />
           </Route>
 
-<Route path="/admin" element={<AdminDashboard />} />
-  
-          // <Route
-          //   path="/adminlogin"
-          //   element={
-          //     isAdminLoggedIn ? <Navigate to={"/admin"} /> : <AdminLogin />
-          //   }
-          // />
 
+  
+          <Route
+            path="/adminlogin"
+            element={
+              isAdminLoggedIn ? <Navigate to={"/admin"} /> : <AdminLogin />
+            }
+          />
+
+<Route path="/admin" element={<AdminDashboard />} />
+
+                
           // <Route
           //   path="/admin"
           //   element={
@@ -71,7 +74,6 @@ function App() {
           //   }
           // />
 
-          // {/* <Route path="*" element={<NotFound />} /> */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
