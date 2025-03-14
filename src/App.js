@@ -53,28 +53,26 @@ function App() {
 
 
   
-          <Route
-            path="/adminlogin"
-            element={
-              isAdminLoggedIn ? <Navigate to={"/admin"} /> : <AdminLogin />
-            }
-          />
+{/* <Route
+    path="/adminlogin"
+    element={
+      isAdminLoggedIn ? <Navigate to={"/admin"} /> : <AdminLogin />
+    }
+/> */}
 
 <Route path="/admin" element={<AdminDashboard />} />
 
-                
-          // <Route
-          //   path="/admin"
-          //   element={
-          //     isAdminLoggedIn ? (
-          //       <AdminDashboard />
-          //     ) : (
-          //       <Navigate to={"/adminlogin"} />
-          //     )
-          //   }
-          // />
+{/* <Route
+    path="/admin"
+    element={
+      isAdminLoggedIn ? (
+        <AdminDashboard />
+      ) : (
+        <Navigate to={"/adminlogin"} />
+      )
+    }
+/> */}
 
-          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     </div>
