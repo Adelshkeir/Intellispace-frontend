@@ -3,16 +3,17 @@ import { Modal, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import Adminproductcard from "./adminproductcard";
 import "./adminproducts.css";
-import firebase from 'firebase/compat/app'; // Modify this line
-import 'firebase/compat/storage'; // Modify this line
+import firebase from "firebase/compat/app"; // Modify this line
+import "firebase/compat/storage"; // Modify this line
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAV0usA005veQhiX_GoclF54BjueFel3ik",
-  authDomain: "intelispace-c108d.firebaseapp.com",
-  projectId: "intelispace-c108d",
-  storageBucket: "intelispace-c108d.appspot.com",
-  messagingSenderId: "765371645211",
-  appId: "1:765371645211:web:f2ec71d652ef8f3b7d27be"
+  apiKey: "AIzaSyBJRiwL87PHG39TLvdeUqnt_CQVlEEO0as",
+  authDomain: "intelispace-82b49.firebaseapp.com",
+  projectId: "intelispace-82b49",
+  storageBucket: "intelispace-82b49.firebasestorage.app",
+  messagingSenderId: "57308685445",
+  appId: "1:57308685445:web:bff63199d67eb17114f5ec",
+  measurementId: "G-CMK3C30BH5",
 };
 
 const app = firebase.initializeApp(firebaseConfig);
@@ -85,11 +86,6 @@ const ProductsPage = () => {
   };
 
   const handleSubmit = async () => {
-    console.log("ProductName:", productName);
-    console.log("ProductPrice:", productPrice);
-    console.log("ProductDescription:", productDescription);
-    console.log("SelectedCategory:", selectedCategory);
-    
     try {
       const formData = new FormData();
       formData.append("name", productName);
@@ -99,10 +95,10 @@ const ProductsPage = () => {
       const imageRef = storage.ref(`images/${productImage.name}`);
       await imageRef.put(productImage);
       const imageUrl = await imageRef.getDownloadURL();
-      console.log(imageUrl)
+      console.log(imageUrl);
       formData.append("image", imageUrl);
       formData.append("categoryId", selectedCategory);
-    
+
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URI}/product`,
         formData,
@@ -112,7 +108,6 @@ const ProductsPage = () => {
           },
         }
       );
-      console.log("Product creation response:", response.data);
       handleCloseModal();
       fetchProducts();
     } catch (error) {
@@ -120,9 +115,7 @@ const ProductsPage = () => {
     }
     console.log("ProductImage:", productImage);
   };
-  
-  
-  
+
   const handleEditButtonClick = (product) => {
     setEditingProduct(product);
     setShowModal(true);

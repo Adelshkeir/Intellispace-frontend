@@ -1,5 +1,10 @@
-import firebase from "firebase/app";
-import "firebase/storage";
+import { initializeApp } from "firebase/app";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBJRiwL87PHG39TLvdeUqnt_CQVlEEO0as",
@@ -8,19 +13,16 @@ const firebaseConfig = {
   storageBucket: "intelispace-82b49.firebasestorage.app",
   messagingSenderId: "57308685445",
   appId: "1:57308685445:web:bff63199d67eb17114f5ec",
-  measurementId: "G-CMK3C30BH5"
+  measurementId: "G-CMK3C30BH5",
 };
 
-const app = firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
 
-const storage = firebase.storage();
-
-const uploadImage = (file) => {
+const uploadImage = async (file) => {
   return new Promise((resolve, reject) => {
-    const storageRef = storage.ref();
-    const imageRef = storageRef.child(`images/${file.name}`);
-
-    const uploadTask = imageRef.put(file);
+    const storageRef = ref(storage, `images/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
       "state_changed",
@@ -30,12 +32,16 @@ const uploadImage = (file) => {
         console.log(`Upload is ${progress}% done`);
       },
       (error) => {
+        console.error("Upload error:", error);
         reject(error);
       },
-      () => {
-        imageRef.getDownloadURL().then((url) => {
-          resolve(url);
-        });
+      async () => {
+        try {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          resolve(downloadURL);
+        } catch (error) {
+          reject(error);
+        }
       }
     );
   });
